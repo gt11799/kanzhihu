@@ -1,0 +1,154 @@
+$def with (name, flag)
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js ">
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit" />
+
+<!--[if lt IE 9]>
+  <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+
+<title>搜知乎</title>
+
+<style>
+input
+{
+	height:35px;
+	width:600px;
+	border-style:solid;
+	border-width:1px;
+	border-color:blue;
+	font-size:large;
+}
+.button
+{
+	height:39px;
+	width:60px;
+	background-color:blue;
+	color:white;
+	
+	font-size:large;
+	letter-spacing:2px;
+}
+div
+{
+	text-align:center;
+}
+#center{
+	margin-right:auto;
+	margin-right:auto;
+	height:200px;
+	background:#F00;
+	width:400px;
+	vertical-align:middle;
+	line-height:200px;
+}
+div.search_form0
+{
+	margin-top:150px;
+}
+div.search_form1
+{
+	margin-top:80px;
+}
+div.search_form2
+{
+	margin-top:80px;
+}
+div.search_form3
+{
+	margin-top:80px;
+}
+div.left
+{
+	clear:both;
+	width:200px;
+	float:left;
+}
+div.right
+{
+	clear:both;
+	width:200px;
+	float:right;
+}
+div.suggest
+{
+	font-size:large;
+	margin-top:20px;
+}
+div.content
+{
+	margin-left:23%;
+	text-align:center;
+	font-size:middle;
+	margin-top:40px;
+	width:50%;
+}
+ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	position:fixed;
+	top:30px;
+	right:20px;
+}
+li
+{
+	display:inline;
+	font-size:middle;
+}
+img.logo
+{
+	width:90px;
+	height:40px;
+	margin-bottom:20px;
+}
+a.navigation
+{
+	color:black;
+	text-decoration:none;
+}
+p
+{
+	text-align:left;	
+}
+</style>
+</head>
+<body>
+<ul>
+	<li><a class="navigation" href="/?search_form=private">隐私声明</a></li>
+	<li><a class="navigation" href="/?search_form=description">网站说明</a></li>
+	<li><a class="navigation" href="/?search_form=other">其他网站</a></li>
+	<li><a class="navigation" href="/?search_form=contact">联系我们</a></li>
+</ul>
+<div class="left"></div>
+<div class="right"></div>
+
+	
+<div class="search_form$flag">
+	$if not flag:
+		<img id="logo" src="http://kanzhihu-gt11799.stor.sinaapp.com/logo.png" class=logo alt="logo"><br>
+	<form>
+		<input type="text" name="search_form"  placeholder="请输入知乎用户ID"><input value="搜索" type="submit" class="button" ><br>
+	</form>
+	$if flag==2:
+		<div class="suggest">您是不是要找：
+			$for item in name:
+				<a class="suggest" href="/?search_form=$item">$item</a>	
+		</div>	
+</div>
+$if flag==1:
+	<div class="content"><h3>$name的登录时间统计：</h3><img id="login_figure" src="/image?name=$name" alt="login time figure"><br></div>
+$if name=="contact":
+	<div class="content"><p>考虑到大部分人都没有安装邮件客户端，我就没有做发送邮件的表单。请发送邮件到gting405@gmail.com。</p><p>（我承认是我懒。:D）</p></div> 
+$elif name=="other":
+	<div class="content"><p>我的其他站点：</p><p>CSDN博客：<a href="http://blog.csdn.net/gt11799">http://blog.csdn.net/gt11799</a></p><p>github主页：<a href="https://github.com/gt11799">https://github.com/gt11799</a></p></div>
+$elif name=="private":
+	<div class="content"><p>本网站仅作玩乐之用，如果侵犯您的隐私，请联系我：gting405@gmail.com。</p><p>烦请多多包涵。</p></div>
+$elif name=="description":
+	<div class="content"><p>我总是在想，互联网的世界那么大，每个角落都会有很有意思的数据。比如知乎，对某些问题的赞同的男女比例，回答问题字数与赞同的比的排序，都会是很有意思的数据，但是我没有那么强大的服务器去抓取那么多的数据。</p><p>偶尔我会想，知乎上的女神和大牛们都是什么时候登录知乎的呢？有没有可能把他们的登录时间给记录下来呢？</p><p>于是就做了一个爬虫，每10分钟就到登录后的知乎首页去抓取人名所对应的时间。当然缺点很明显，我只能抓取我关注的人，而且当他们有关注或者点赞的时候才会显示到我的首页上，也算是作弊了。</p><p>数据越来越多，如何展示呢？不如做个网站吧。</p><p>因为网站的结构很简单，就选择了最轻的web.py。于是最大的挑战就成了如何把绘出的图片展示到前台。为了体验，还捎带着做了一个简单的模糊匹配。一路上也算是过关斩将，遇佛杀佛。</p><p>原谅我那糟糕的网页设计，CSS和JavaScript实在是无暇顾及。</p></div>
+
+</body>
+</html>
