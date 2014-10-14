@@ -12,10 +12,12 @@ $def with (name, flag)
 <title>搜知乎</title>
 
 <style>
+
 input
 {
+	margin-left:27%;
 	height:35px;
-	width:600px;
+	width:40%;
 	border-style:solid;
 	border-width:1px;
 	border-color:blue;
@@ -23,6 +25,7 @@ input
 }
 .button
 {
+	margin-left:0px;
 	height:39px;
 	width:60px;
 	background-color:blue;
@@ -30,19 +33,6 @@ input
 	
 	font-size:large;
 	letter-spacing:2px;
-}
-div
-{
-	text-align:center;
-}
-#center{
-	margin-right:auto;
-	margin-right:auto;
-	height:200px;
-	background:#F00;
-	width:400px;
-	vertical-align:middle;
-	line-height:200px;
 }
 div.search_form0
 {
@@ -74,13 +64,13 @@ div.right
 }
 div.suggest
 {
+	margin-left:27%;
 	font-size:large;
 	margin-top:20px;
 }
 div.content
 {
-	margin-left:23%;
-	text-align:center;
+	margin-left:27%;
 	font-size:middle;
 	margin-top:40px;
 	width:50%;
@@ -101,9 +91,15 @@ li
 }
 img.logo
 {
-	width:90px;
-	height:40px;
-	margin-bottom:20px;
+	margin-left:42%;
+	width:10%;
+	margin-bottom:1em;
+	text-align:center;
+}
+img#login_figure
+{
+	margin-left:;
+	width:100%;
 }
 a.navigation
 {
@@ -140,7 +136,7 @@ p
 		</div>	
 </div>
 $if flag==1:
-	<div class="content"><h3>$name的登录时间统计：</h3><img id="login_figure" src="/image?name=$name" alt="login time figure"><br></div>
+	<div class="content"><p>$name的登录时间统计：</p><img id="login_figure" src="/image?name=$name" alt="login time figure"><br></div>
 $if name=="contact":
 	<div class="content"><p>考虑到大部分人都没有安装邮件客户端，我就没有做发送邮件的表单。请发送邮件到gting405@gmail.com。</p><p>（我承认是我懒。:D）</p></div> 
 $elif name=="other":
@@ -148,7 +144,7 @@ $elif name=="other":
 $elif name=="private":
 	<div class="content"><p>本网站仅作玩乐之用，如果侵犯您的隐私，请联系我：gting405@gmail.com。</p><p>烦请多多包涵。</p></div>
 $elif name=="description":
-	<div class="content"><p>我总是在想，互联网的世界那么大，每个角落都会有很有意思的数据。比如知乎，对某些问题的赞同的男女比例，回答问题字数与赞同的比的排序，都会是很有意思的数据，但是我没有那么强大的服务器去抓取那么多的数据。</p><p>偶尔我会想，知乎上的女神和大牛们都是什么时候登录知乎的呢？有没有可能把他们的登录时间给记录下来呢？</p><p>于是就做了一个爬虫，每10分钟就到登录后的知乎首页去抓取人名所对应的时间。当然缺点很明显，我只能抓取我关注的人，而且当他们有关注或者点赞的时候才会显示到我的首页上，也算是作弊了。</p><p>数据越来越多，如何展示呢？不如做个网站吧。</p><p>因为网站的结构很简单，就选择了最轻的web.py。于是最大的挑战就成了如何把绘出的图片展示到前台。为了体验，还捎带着做了一个简单的模糊匹配。一路上也算是过关斩将，遇佛杀佛。</p><p>原谅我那糟糕的网页设计，CSS和JavaScript实在是无暇顾及。</p></div>
+	<div class="content"><p>我总是在想，互联网的世界那么大，每个角落都会有很有意思的数据。比如知乎，对某些问题的赞同的男女比例，回答问题字数与赞同的比的排序，都会是很有意思的数据，但是我没有那么强大的服务器去抓取那么多的数据。</p><p>偶尔我会想，知乎上的女神和大牛们都是什么时候登录知乎的呢？有没有可能把他们的登录时间给记录下来呢？</p><p>于是就做了一个爬虫，每10分钟就到登录后的知乎首页去抓取人名所对应的时间。当然缺点很明显，我只能抓取我关注的人，而且当他们有关注或者点赞的时候才会显示到我的首页上，也算是作弊了。</p><p>数据越来越多，如何展示呢？不如做个网站吧。</p><p>因为网站的结构很简单，就选择了最轻的web.py。于是最大的挑战就成了如何把绘出的图片展示到前台。为了体验，还捎带着做了一个简单的模糊匹配。一路上也算是过关斩将，遇佛杀佛。</p><p>原谅我那糟糕的网页设计，CSS和JavaScript实在是无暇顾及。</p><p>关于本网站建站的技术说明：<a href="http://blog.csdn.net/gt11799/article/details/39939067">http://blog.csdn.net/gt11799/article/details/39939067</a></p><p>网站代码：<a href="https://github.com/gt11799/kanzhihu"></a></p></div>
 
 </body>
 </html>

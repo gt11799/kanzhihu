@@ -11,7 +11,7 @@ urls = (
     "/", "SearchForm",
 	"/hello", "Hello",
 	"/image", "GeImage",
-	"/(.*)","SearchForm",
+	"/(.*)","Hello",
 	)
 	
 app_root = os.path.dirname(__file__)

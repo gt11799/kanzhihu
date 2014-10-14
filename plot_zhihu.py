@@ -45,13 +45,19 @@ class PlotZhihu(object):
         
     def plot(self):
         
-        fig = plt.figure()
+        fig = plt.figure(dpi=50)
         try:
-            y = np.array(self.hour)
-            plt.hist(y)
+            fig = plt.figure()
+            x = range(24)
+            y = [0 for _ in x]
+            for hour in self.hour:
+                y[hour] += 1
         except:
             buf = StringIO.StringIO()
             return buf
+        ax = fig.add_subplot(111)
+        plt.fill(x, y, 'r')
+        ax.set_ylim(0, max(y) * 1.3)
         
         
         buf = StringIO.StringIO()
