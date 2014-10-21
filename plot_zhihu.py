@@ -46,18 +46,17 @@ class PlotZhihu(object):
     def plot(self):
         
         fig = plt.figure(dpi=50)
-        try:
-            fig = plt.figure()
-            x = range(24)
-            y = [0 for _ in x]
-            for hour in self.hour:
-                y[hour] += 1
-        except:
-            buf = StringIO.StringIO()
-            return buf
-        ax = fig.add_subplot(111)
+        x = range(24)
+        y = [0 for _ in x]
+        for hour in self.hour:
+            y[hour] += 1
+            
+        ax = fig.add_subplot(111, frameon=False)
         plt.fill(x, y, 'r')
         ax.set_ylim(0, max(y) * 1.3)
+        ax.set_xlim(0, 24)
+        
+        ax.axes.get_yaxis().set_visible(False)
         
         
         buf = StringIO.StringIO()
