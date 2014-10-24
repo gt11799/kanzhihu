@@ -47,7 +47,7 @@ class PlotZhihu(object):
         
         fig = plt.figure(dpi=50)
         x = range(24)
-        y = [0 for _ in x]
+        y = [0] * 24
         for hour in self.hour:
             y[hour] += 1
             
