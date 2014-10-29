@@ -34,22 +34,20 @@ class PlotZhihu(object):
         except:
             pass
         self.time = set([int(item[0]) for item in self.cursor]) #remove the repeated data
-        self.hour = []
+        self.hours = []
         for item in self.time:
             date = ctime(item / 1000)  #there are three zero in the tail
             hour_and_minute = date.split(" ")[3] #get the time
             hour = hour_and_minute.split(":")[0] #get the number of hour 
-            self.hour.append(int(hour))
+            self.hours.append(int(hour))
 
-        return self.hour  #for test, the information is self.hour
+        return self.hours  #for test, the information is self.hours
         
     def plot(self):
         
         fig = plt.figure(dpi=50)
         x = range(24)
-        y = [0] * 24
-        for hour in self.hour:
-            y[hour] += 1
+        y = [self.hours.count(hour) for hour in x]
             
         ax = fig.add_subplot(111, frameon=False)
         plt.fill(x, y, 'r')
